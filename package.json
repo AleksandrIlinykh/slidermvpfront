@@ -12,6 +12,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@shotstack/shotstack-studio": "^1.6.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },

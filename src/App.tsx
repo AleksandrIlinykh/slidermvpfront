@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import './App.css';
 import { defaultConfig } from './mock';
-import type { SimpleConfig } from './types';
+import type { ImageItem } from './types';
 
 function App() {
   // The source of truth you'll use in the app:
-  const [config, setConfig] = useState<SimpleConfig>(defaultConfig);
+  const [config, setConfig] = useState<ImageItem[]>(defaultConfig);
 
   // UI text shown in the textarea:
   const [text, setText] = useState<string>(() =>
@@ -19,7 +19,7 @@ function App() {
   const onChange = (value: string) => {
     setText(value);
     try {
-      const parsed = JSON.parse(value) as SimpleConfig;
+      const parsed = JSON.parse(value) as ImageItem[];
 
       setConfig(parsed); // ✅ keep object in sync
       setError(null);
@@ -44,8 +44,12 @@ function App() {
     setRenderStatus('Preparing render...');
 
     try {
-      const { createRender, pollRenderStatus } = await import('./services/shotstack');
-      const { transformToShotstackPayload } = await import('./utils/transformer');
+      const { createRender, pollRenderStatus } = await import(
+        './services/shotstack'
+      );
+      const { transformToShotstackPayload } = await import(
+        './utils/transformer'
+      );
 
       // Transform simple config to Shotstack format
       const shotstackPayload = transformToShotstackPayload(config);
@@ -96,15 +100,13 @@ function App() {
       </form>
 
       {renderStatus && (
-        <div style={{ marginTop: '1rem', color: '#666' }}>
-          {renderStatus}
-        </div>
+        <div style={{ marginTop: '1rem', color: '#666' }}>{renderStatus}</div>
       )}
 
       {videoUrl && (
         <div style={{ marginTop: '2rem' }}>
           <h2>Result:</h2>
-          <video controls width="600" style={{ maxWidth: '100%' }}>
+          <video controls>
             <source src={videoUrl} type="video/mp4" />
             Your browser does not support the video tag.
           </video>

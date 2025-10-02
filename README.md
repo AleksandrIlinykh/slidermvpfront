@@ -2,6 +2,21 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## Shotstack API Documentation
+
+This project uses Shotstack API for video generation. Key documentation links:
+
+- **API Reference**: https://shotstack.io/docs/api/
+- **Text Positioning Guide**: https://shotstack.io/learn/how-to-position-clips/
+- **Add Text to Video**: https://shotstack.io/learn/add-text-to-video/
+
+### Positioning and Offset
+
+- `offset.y` values: `-1` to `1` (relative to viewport)
+- Negative y values move elements **downward**
+- Positive y values move elements **upward**
+- Example: `offset: { y: -0.3 }` moves text 30% down from its base position
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
