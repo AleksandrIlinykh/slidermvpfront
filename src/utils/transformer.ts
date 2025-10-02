@@ -19,8 +19,8 @@ export function transformToShotstackPayload(
     },
     start: index * CLIP_DURATION,
     length: CLIP_DURATION,
-    effect: 'slideRight' as const,
-    position: 'center' as const,
+    effect: 'slideLeft' as const,
+    position: 'bottom' as const,
   }));
 
   // Create image clips with varying effects
